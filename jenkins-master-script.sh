@@ -3,6 +3,8 @@ JENKINS_HOME="/var/lib/jenkins"
 PLUGIN_DIR="${JENKINS_HOME}/plugins"
 BACKUP_DIR="${JENKINS_HOME}/backup_`date "+%Y-%m-%d"`"
 
+echo "Please make sure Jenkins is not running in server before performing below action,Else it may get corrupted"
+echo " "
 ### Function to get current plugins version installed in server #######
 function current_plugins_version ()
 {
