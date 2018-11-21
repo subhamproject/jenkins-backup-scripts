@@ -63,6 +63,7 @@ function upgrade_plugins () {
   echo "fixing permissions"
   chown ${file_owner} ${PLUGIN_DIR} -R
   echo "All plugins with dependency has been upgraded"
+  echo "Please restart Jenkins for the change to take effect"
 }
 
 
