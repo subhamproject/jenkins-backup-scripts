@@ -3,6 +3,7 @@ JENKINS_HOME="/var/lib/jenkins"
 PLUGIN_DIR="${JENKINS_HOME}/plugins"
 BACKUP_DIR="${JENKINS_HOME}/backup_`date "+%Y-%m-%d"`"
 
+### Function to get current plugins version installed in server #######
 function current_plugins_version ()
 {
        DIR_LIST="$(ls -l $PLUGIN_DIR |grep ^d|awk '{print $NF}')"
@@ -18,6 +19,7 @@ function current_plugins_version ()
       echo "Current plugin version details are taken..output can be found in /tmp/Plugins_version_list_`hostname`.txt"
 }
 
+### Function to take backup of plugins which are to be upgraded in server #######
 function backup_plugins ()
 {
      [ ! -d $BACKUP_DIR ] && mkdir -p $BACKUP_DIR
@@ -31,7 +33,8 @@ function backup_plugins ()
     echo "Backup for plugins which are to be upgrade has been taken in $BACKUP_DIR"
 }
 
-function install_plugins () {
+### Function to take install and upgrade plugins in server #######
+function upgrade_plugins () {
     file_owner=jenkins.jenkins
     plugin_repo_url="http://updates.jenkins-ci.org/download/plugins"
     [ ! -d $PLUGIN_DIR ] && mkdir -p $PLUGIN_DIR
@@ -75,7 +78,7 @@ do
             backup_plugins
             ;;
         "Install Updated Plugins")
-            install_plugins
+            upgrade_plugins
             ;;
         "Quit")
             break
