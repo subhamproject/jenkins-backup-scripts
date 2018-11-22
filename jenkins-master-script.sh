@@ -1,10 +1,10 @@
 #!/bin/bash
-####################################################################################################################################################################
-#######################          MASTER SCRIPT TO DO FOLLOWING              ########################################################################################
-######################## 1 - 'Get current version of installed plugins'     ########################################################################################
-######################## 2 - 'Take backup of plugins we are going to upgrade'#######################################################################################
-######################## 3 - 'Upgrade list of plugins'                       #######################################################################################
-####################################################################################################################################################################
+#####################################################################################################################################################
+########          MASTER SCRIPT TO DO FOLLOWING              ########################################################################################
+######### 1 - 'Get current version of installed plugins'     ########################################################################################
+######### 2 - 'Take backup of plugins we are going to upgrade'#######################################################################################
+######### 3 - 'Upgrade list of plugins'                       #######################################################################################
+#####################################################################################################################################################
 
 
 JENKINS_HOME="/var/lib/jenkins"
@@ -34,7 +34,7 @@ function current_plugins_version ()
 function backup_plugins ()
 {
      [ ! -d $BACKUP_DIR ] && mkdir -p $BACKUP_DIR
-     for PLUGINS_LIST in $(cat /tmp/file.txt)
+     for PLUGINS_LIST in $(cat /tmp/file.txt) ## /tmp/file.txt is a file where plugins details need to be put in which are to be updated
      do
      [ -d $PLUGIN_DIR/$(echo $PLUGINS_LIST|cut -d':' -f1) ] && mv $PLUGIN_DIR/$(echo $PLUGINS_LIST|cut -d':' -f1) $BACKUP_DIR/
      [ -f $PLUGIN_DIR/$(echo $PLUGINS_LIST|cut -d':' -f1).jpi ] && mv $PLUGIN_DIR/$(echo $PLUGINS_LIST|cut -d':' -f1).jpi* $BACKUP_DIR/
@@ -61,7 +61,7 @@ function upgrade_plugins () {
    fi
    }
 
-  for plugin in $(cat /tmp/file.txt)
+  for plugin in $(cat /tmp/file.txt) ## /tmp/file.txt is a file where plugins details need to be put in which are to be updated
   do
   Plugin_install "$plugin"
   done
