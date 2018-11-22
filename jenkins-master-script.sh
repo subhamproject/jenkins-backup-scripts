@@ -39,7 +39,7 @@ function backup_plugins ()
 
 ### Function to take install and upgrade plugins in server #######
 function upgrade_plugins () {
-    file_owner=jenkins.jenkins
+    file_owner="jenkins:jenkins"
     plugin_repo_url="http://updates.jenkins-ci.org/download/plugins"
     [ ! -d $PLUGIN_DIR ] && mkdir -p $PLUGIN_DIR
 
@@ -66,7 +66,7 @@ function upgrade_plugins () {
   done
   done
   echo "fixing permissions"
-  chown ${file_owner} ${PLUGIN_DIR} -R
+  chown -R ${file_owner} ${PLUGIN_DIR}
   echo "All plugins with dependency has been upgraded"
   echo "Please restart Jenkins for the change to take effect"
 }
