@@ -74,7 +74,7 @@ function upgrade_plugins () {
 
 
 PS3='Please enter your choice: '
-options=("Get Current Plugins Version" "Take Plugins Backup" "Install Updated Plugins" "Quit")
+options=("Get Current Plugins Version" "Take Plugins Backup" "Update Plugins" "Quit")
 select opt in "${options[@]}"
 do
     case $opt in
@@ -84,7 +84,7 @@ do
         "Take Plugins Backup")
             backup_plugins
             ;;
-        "Install Updated Plugins")
+        "Update Plugins")
             upgrade_plugins
             ;;
         "Quit")
