@@ -87,7 +87,6 @@ do
             upgrade_plugins
             upgrade_plugins
             upgrade_plugins
-            upgrade_plugins
             ;;
         "Quit")
             break
