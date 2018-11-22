@@ -9,17 +9,17 @@ echo " "
 function current_plugins_version ()
 {
        DIR_LIST="$(ls -l $PLUGIN_DIR |grep ^d|awk '{print $NF}')"
-       echo "**********Plugin version details from `hostname`***********" > /tmp/Plugins_version_list_`hostname`.txt
+       echo "**********Plugin version details from `hostname`***********" > /tmp/Plugins_version_$$_list_`hostname`.txt
        for DIR in $DIR_LIST
        do
        if [ -d $PLUGIN_DIR/$DIR ]
        then
        #VERSION=$(find $PLUGIN_DIR/$DIR -name pom.properties |xargs cat |grep version|cut -d'=' -f2)
        VERSION=$(find $PLUGIN_DIR/$DIR -name MANIFEST.MF|xargs cat|grep "Plugin-Version: "|cut -d':' -f2|tr -d ' ')
-       echo "$DIR:$VERSION" >> /tmp/Plugins_version_list_`hostname`.txt
+       echo "$DIR:$VERSION" >> /tmp/Plugins_version_$$_list_`hostname`.txt
       fi
       done
-      echo "Current plugin version details are taken..output can be found in /tmp/Plugins_version_list_`hostname`.txt"
+      echo "Current plugin version details are taken..output can be found in /tmp/Plugins_version_$$_list_`hostname`.txt"
 }
 
 ### Function to take backup of plugins which are to be upgraded in server #######
