@@ -58,7 +58,8 @@ function upgrade_plugins () {
   Plugin_install "$plugin"
   done
 
-  for f in ${PLUGIN_DIR}/*.hpi ; do
+  #for f in ${PLUGIN_DIR}/*.hpi ; do
+  for f in $(find ${PLUGIN_DIR} -name "*.hpi" -type f -mtime 0) ; do
   echo "Installing dependencies for $f"
   deps=$( unzip -p ${f} META-INF/MANIFEST.MF | tr -d '\r' | sed -e ':a;N;$!ba;s/\n //g' | grep -e "^Plugin-Dependencies: " | awk '{ print $2 }' | tr ',' '\n' |cut -d';' -f1 )
   for plugin in $deps; do
@@ -84,7 +85,6 @@ do
             backup_plugins
             ;;
         "Install Updated Plugins")
-            upgrade_plugins
             upgrade_plugins
             ;;
         "Quit")
