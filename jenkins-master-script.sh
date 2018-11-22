@@ -29,9 +29,9 @@ function backup_plugins ()
      for PLUGINS_LIST in $(cat /tmp/file.txt)
      do
      [ -d $PLUGIN_DIR/$(echo $PLUGINS_LIST|cut -d':' -f1) ] && mv $PLUGIN_DIR/$(echo $PLUGINS_LIST|cut -d':' -f1) $BACKUP_DIR/
-     [ -f $PLUGIN_DIR/$(echo $PLUGINS_LIST|cut -d':' -f1).jpi ] && mv $PLUGIN_DIR/$(echo $PLUGINS_LIST|cut -d':' -f1).jpi $BACKUP_DIR/
+     [ -f $PLUGIN_DIR/$(echo $PLUGINS_LIST|cut -d':' -f1).jpi ] && mv $PLUGIN_DIR/$(echo $PLUGINS_LIST|cut -d':' -f1).jpi* $BACKUP_DIR/
      [ -f $PLUGIN_DIR/$(echo $PLUGINS_LIST|cut -d':' -f1).jpi.tmp ] && mv $PLUGIN_DIR/$(echo $PLUGINS_LIST|cut -d':' -f1).jpi.tmp $BACKUP_DIR/
-     [ -f $PLUGIN_DIR/$(echo $PLUGINS_LIST|cut -d':' -f1).hpi ] &&  mv $PLUGIN_DIR/$(echo $PLUGINS_LIST|cut -d':' -f1).hpi $BACKUP_DIR/
+     [ -f $PLUGIN_DIR/$(echo $PLUGINS_LIST|cut -d':' -f1).hpi ] &&  mv $PLUGIN_DIR/$(echo $PLUGINS_LIST|cut -d':' -f1).hpi* $BACKUP_DIR/
      [ -f $PLUGIN_DIR/$(echo $PLUGINS_LIST|cut -d':' -f1).bak ] &&  mv $PLUGIN_DIR/$(echo $PLUGINS_LIST|cut -d':' -f1).bak $BACKUP_DIR/
     done
     echo "Backup for plugins which are to be upgrade has been taken in $BACKUP_DIR"
