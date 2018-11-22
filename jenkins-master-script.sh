@@ -85,6 +85,9 @@ do
             ;;
         "Install Updated Plugins")
             upgrade_plugins
+            upgrade_plugins
+            upgrade_plugins
+            upgrade_plugins
             ;;
         "Quit")
             break
