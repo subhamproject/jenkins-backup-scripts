@@ -1,1 +1,4 @@
 https://github.com/jenkinsci/generic-webhook-trigger-plugin
+
+
+https://bjurr.com/jenkins-integration-on-steroids/
