@@ -1,5 +1,5 @@
 #!/bin/bash
-#Script to take full backup of jenkins and its configuration"
+#Script to take full backup of jenkins and its configuration and push the backup to S3"
 
 if [ -z "${1}" ]
 then
