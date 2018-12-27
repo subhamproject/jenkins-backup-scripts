@@ -7,7 +7,7 @@
 #####################################################################################################################################################
 
 
-JENKINS_HOME="/var/lib/jenkins"
+JENKINS_HOME="$(cat /etc/sysconfig/jenkins|grep ^JENKINS_HOME|cut -d '=' -f2|sed 's|"||g')"
 PLUGIN_DIR="${JENKINS_HOME}/plugins"
 BACKUP_DIR="${JENKINS_HOME}/backup_$$_`date "+%Y-%m-%d"`"
 
